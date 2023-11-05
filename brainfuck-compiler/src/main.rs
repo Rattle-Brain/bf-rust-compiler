@@ -1,6 +1,7 @@
 use std::env;
 use std::io::Read;
 use std::fs::File;
+use std::process::exit;
 
 // Lexical instructions. Text converted to code
 #[derive(Clone)]
@@ -38,8 +39,9 @@ fn main()
     let program = parse_instructions(lexical_instructions);
 
     let mut tape: Vec<u8> = vec![0; TAPE_LEN];
-    let mut pointer: usize = TAPE_LEN/2;
+    let mut pointer: usize = 1000;
     execute(&program, &mut tape, &mut pointer);
+    exit(0);
 }
 
 /*
